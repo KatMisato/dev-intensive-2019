@@ -41,7 +41,7 @@ data class User(
             """.trimIndent()
     )
 
-    data class c(
+    data class Builder(
         var id: String? = "",
         var firstName: String? = "",
         var lastName: String? = "",
