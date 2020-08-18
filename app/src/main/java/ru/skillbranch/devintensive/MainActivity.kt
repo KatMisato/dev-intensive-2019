@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -47,9 +48,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         sendBtn.setOnClickListener(this)
 
         messageEt.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
-            hideKeyboard()
-            sendText()
-            true
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                sendText()
+                true
+            } else {
+                false
+            }
         })
     }
 
@@ -84,10 +88,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
-        super.onSaveInstanceState(outState)
-
         outState?.putString("STATUS", benderObj.status.name)
         outState?.putString("QUESTION", benderObj.question.name)
+        super.onSaveInstanceState(outState)
     }
 
     override fun onClick(v: View?) {
@@ -102,5 +105,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val (r, g, b) = color
         benderImage.setColorFilter(Color.rgb(r, g, b), PorterDuff.Mode.MULTIPLY)
         textTxt.text = pharase
+        hideKeyboard()
     }
 }
