@@ -17,7 +17,7 @@ fun Activity.hideKeyboard() {
 }
 
 fun Activity.isKeyboardOpen(): Boolean {
-    val rootView = (findViewById<ViewGroup>(R.id.content)).getChildAt(0) as ViewGroup
+    val rootView = window.decorView
     val r = Rect()
     rootView.getWindowVisibleDisplayFrame(r)
     val dm: DisplayMetrics = rootView.resources.displayMetrics
