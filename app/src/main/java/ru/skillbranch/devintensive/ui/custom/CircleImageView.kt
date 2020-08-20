@@ -81,7 +81,7 @@ class CircleImageView @JvmOverloads constructor(
         update()
     }
 
-    fun drawDefaultAvatar(initials: String, textSize: Float = 48f, textColor: Int = Color.WHITE) : Bitmap {
+    fun drawInitialsAvatar(initials: String, textSize: Float = 48f, textColor: Int = Color.WHITE) : Bitmap {
         val paint = Paint().apply {
             isAntiAlias = true
             this.textSize = textSize.dp
