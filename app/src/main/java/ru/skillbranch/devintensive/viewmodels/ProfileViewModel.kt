@@ -1,6 +1,7 @@
 package ru.skillbranch.devintensive.viewmodels
 
 import android.util.Log
+import android.util.Patterns
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,11 +13,13 @@ class ProfileViewModel : ViewModel() {
     private val repository: PreferencesRepository = PreferencesRepository
     private val profileData = MutableLiveData<Profile>()
     private val appTheme = MutableLiveData<Int>()
+    private val repositoryValid = MutableLiveData<Boolean>()
 
     init {
         Log.d("M_ProfileViewModel", "init view model")
         profileData.value = repository.getProfile()
         appTheme.value = repository.getAppTheme()
+        repositoryValid.value = repository.getRepositoryValid()
     }
 
     override fun onCleared() {
@@ -27,6 +30,12 @@ class ProfileViewModel : ViewModel() {
     fun getProfileData(): LiveData<Profile> = profileData
 
     fun getTheme(): LiveData<Int> = appTheme
+
+    fun isRepositoryValid(): LiveData<Boolean> = repositoryValid
+
+    fun repositoryValidation(repository: String) {
+        repositoryValid.value = Patterns.WEB_URL.matcher(repository).matches()
+    }
 
     fun saveProfileData(profile: Profile) {
         repository.saveProfile(profile)

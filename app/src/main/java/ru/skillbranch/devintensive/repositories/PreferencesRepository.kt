@@ -14,6 +14,7 @@ object PreferencesRepository {
     private const val RATING = "RATING"
     private const val RESPECT = "RESPECT"
     private const val APP_THEME = "APP_THEME"
+    private const val REPOSITORY_VALID = "REPOSITORY_VALID"
 
     private val prefs: SharedPreferences by lazy {
         val ctx = App.applicationContext()
@@ -46,6 +47,11 @@ object PreferencesRepository {
         }
     }
 
+
+    fun getRepositoryValid(): Boolean = prefs.getBoolean(REPOSITORY_VALID, true)
+    fun saveRepositoryValid(repositoryValid: Boolean) =
+        putValue(REPOSITORY_VALID to repositoryValid)
+
     private fun putValue(pair: Pair<String, Any>) = with(prefs.edit()) {
         val key = pair.first
         val value = pair.second
@@ -60,6 +66,5 @@ object PreferencesRepository {
 
         apply()
     }
-
 
 }
