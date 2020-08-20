@@ -83,7 +83,7 @@
         android:id="@+id/view3"
         android:layout_width="0dp"
         android:layout_height="80dp"
-        android:background="@color/color_primary_light"
+        android:background="?attr/colorAccentedSurface"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -202,7 +202,7 @@
         android:layout_height="1dp"
         android:layout_marginStart="@dimen/space_maximum_72"
         android:layout_marginTop="5dp"
-        android:background="@color/color_divider_dark"
+        android:background="?attr/colorDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wr_last_name" />
@@ -242,7 +242,7 @@
         android:layout_height="1dp"
         android:layout_marginStart="@dimen/space_maximum_72"
         android:layout_marginTop="5dp"
-        android:background="@color/color_divider_dark"
+        android:background="?attr/colorDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wr_about" />
